@@ -1,0 +1,41 @@
+import Functions
+
+decoder_funcs = {
+    "Temperatures_1": None,
+    "Temperatures_2": None,
+    "Temperatures_3": None,
+    "Analog_Input_Voltages": None,
+    "Digital_Input_Status": None,
+    "Motor_Position_Information": None,
+    "Current_Information": None,
+    "Voltage_Information": None,
+    "Flux_Information": None,
+    "Internal_Voltages": None,
+    "Internal_States": None,
+    "Fault_Codes": None,
+    "Torque_&_Timer_Information": None,
+    "Modulation_Index_&_Flux_Weakening_Output_Information": None,
+    "Firmware_Information": None,
+    "Diagnostic_Data": None,
+    "High_Speed_Message": None,
+}
+
+decoder_ascii = {
+    "0x0A0": "Temperatures_1",
+    "0x0A1": "Temperatures_2",
+    "0x0A2": "Temperatures_3",
+    "0x0A3": "Analog_Input_Voltages",
+    "0x0A4": "Digital_Input_Status",
+    "0x0A5": "Motor_Position_Information",
+    "0x0A6": "Current_Information",
+    "0x0A7": "Voltage_Information",
+    "0x0A8": "Flux_Information",
+    "0x0A9": "Internal_Voltages",
+    "0x0AA": "Internal_States",
+    "0x0AB": "Fault_Codes",
+    "0x0AC": "Torque_&_Timer_Information",
+    "0x0AD": "Modulation_Index_&_Flux_Weakening_Output_Information",
+    "0x0AE": "Firmware_Information",
+    "0x0AF": "Diagnostic_Data",
+    "0x0B0": "High_Speed_Message",
+}
