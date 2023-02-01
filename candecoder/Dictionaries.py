@@ -1,13 +1,13 @@
-from candecoder.inverter_funcs import temperatures1
+from candecoder.inverter_funcs import *
 
 decoder_funcs = {
     "Inverter1_Temperatures1": temperatures1,
-    "Inverter1_Temperatures2": None,
-    "Inverter1_Temperatures3": None,
+    "Inverter1_Temperatures2": temperatures2,
+    "Inverter1_Temperatures3": temperatures3,
     "Inverter1_Analog_Input_Voltages": None,
-    "Inverter1_Digital_Input_Status": None,
-    "Inverter1_Motor_Position_Information": None,
-    "Inverter1_Current_Information": None,
+    "Inverter1_Digital_Input_Status": digital_input_status(),
+    "Inverter1_Motor_Position_Information": motor_position_information(),
+    "Inverter1_Current_Information": current_information(),
     "Inverter1_Voltage_Information": None,
     "Inverter1_Flux_Information": None,
     "Inverter1_Internal_Voltages": None,
