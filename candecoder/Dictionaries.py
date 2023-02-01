@@ -1,0 +1,41 @@
+from candecoder.inverter_funcs import temperatures1
+
+decoder_funcs = {
+    "Temperatures_1": None,
+    "Temperatures_2": None,
+    "Temperatures_3": None,
+    "Analog_Input_Voltages": None,
+    "Digital_Input_Status": None,
+    "Motor_Position_Information": None,
+    "Current_Information": None,
+    "Voltage_Information": None,
+    "Flux_Information": None,
+    "Internal_Voltages": None,
+    "Internal_States": None,
+    "Fault_Codes": None,
+    "Torque_&_Timer_Information": None,
+    "Modulation_Index_&_Flux_Weakening_Output_Information": None,
+    "Firmware_Information": None,
+    "Diagnostic_Data": None,
+    "High_Speed_Message": None,
+}
+
+canid_to_message = {
+    "00A0": "Inverter1_Temperatures1",
+    "00A1": "Inverter1_Temperatures2",
+    "00A2": "Inverter1_Temperatures3",
+    "00A3": "Inverter1_Analog_Input_Voltages",
+    "00A4": "Inverter1_Digital_Input_Status",
+    "00A5": "Inverter1_Motor_Position_Information",
+    "00A6": "Inverter1_Current_Information",
+    "00A7": "Inverter1_Voltage_Information",
+    "00A8": "Inverter1_Flux_Information",
+    "00A9": "Inverter1_Internal_Voltages",
+    "00AA": "Inverter1_Internal_States",
+    "00AB": "Inverter1_Fault_Codes",
+    "00AC": "Inverter1_Torque_&_Timer_Information",
+    "00AD": "Inverter1_Modulation_Index_&_Flux_Weakening_Output_Information",
+    "00AE": "Inverter1_Firmware_Information",
+    "00AF": "Inverter1_Diagnostic_Data",
+    "00B0": "Inverter1_High_Speed_Message",
+}
