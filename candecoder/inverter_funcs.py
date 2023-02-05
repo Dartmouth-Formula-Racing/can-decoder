@@ -52,3 +52,43 @@ def current_information(data):
         "PhaseCCurrent": (signed_int(data[4], data[5]) / 10., "amps"),
         "DCBusCurrent": (signed_int(data[6], data[7]) / 10., "amps")
     }
+
+def voltage_information(data):
+    return {
+        "BCBusVoltage": (signed_int(data[0],data[1]) / 10., "volts"),
+        "OutputVoltage": (signed_int(data[2], data[3]) / 10., "volts"),
+        "VAB_Vd_Voltage": (signed_int(data[4], data[5]) / 10., "volts"),
+        "VBC_Vq_Voltage": (signed_int(data[6], data[7]) / 10., "volts")
+    }
+
+def flux_information(data):
+    return {
+        "FluxCommand": (signed_int(data[0], data[1]) / 1000., "Webers"),
+        "FluxFeedback": (signed_int(data[2], data[3]) / 1000., "Webers"),
+        "IdFeedback": (signed_int(data[4], data[5]) / 1000.), # not sure
+        "IqFeedback": (signed_int(data[6], data[7]) / 1000.) #not sure
+    }
+
+def internal_voltages(data):
+    return {
+        "1.5VReferenceVoltage": (signed_int(data[0], data[1]) / 10., "volts"),
+        "2.5VReferenceVoltage": (signed_int(data[2], data[3]) / 10., "volts"),
+        "4.0VReferenceVoltage": (signed_int(data[4], data[5]) / 10., "volts"),
+        "12VSystemVoltage": (signed_int(data[6], data[7]) / 10., "volts")
+    }
+
+def modulation_index(data):
+    return {
+        "ModulationIndex": (signed_int(data[0], data[1]) / 100.),
+        "FluxWeakeningOutput": (signed_int(data[2], data[3]) / 10., "amps"),
+        "IdCommand": (signed_int(data[4], data[5]), data[6], data[7] / 10.),
+        "IqCommand": (signed_int(data[2], data[3]) / 10.)
+    }
+
+def high_speed_message(data):
+    return {
+        "TorqueCommand": (signed_int(data[0], data[1]) / 10., "N-m"),
+        "TorqueFeedback": (signed_int(data[2], data[3]) / 10., "N-m"),
+        "MotorSpeed": (signed_int(data[4], data[5]) / 10., "rpm"),
+        "DCBusVoltage": (signed_int(data[6], data[7]) / 10., "volts")
+    }
