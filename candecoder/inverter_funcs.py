@@ -40,7 +40,7 @@ def digital_input_status(data):
 def motor_position_information(data):
     return {
         "MotorAngle(Electrical)": (signed_int(data[0], data[1]) / 10., "deg"),
-        "MotorSpeed": (signed_int(data[2], data[3]) / 10., "rpm"),
+        "MotorSpeed": (signed_int(data[2], data[3]), "rpm"),
         "ElectricalOutputFrequency": (signed_int(data[4], data[5]) / 10., "hz"),
         "DeltaResolverFiltered": (signed_int(data[6], data[7]) / 10., "deg")
     }
