@@ -1,4 +1,4 @@
-from candecoder.inverter_types import signed_int
+from candecoder.inverter_types import signed_int, grab_byte
 
 
 def temperatures1(data):
@@ -6,7 +6,7 @@ def temperatures1(data):
         "ModA": (signed_int(data[0], data[1]) / 10., "degC"),
         "ModB": (signed_int(data[2], data[3]) / 10., "degC"),
         "ModC": (signed_int(data[4], data[5]) / 10., "degC"),
-        "GateDriverBoard": (signed_int(data[6], data[7]) / 10., "degC"),
+        "GateDriverBoard": (signed_int(data[6], data[7]) / 10., "degC")
     }
 
 def temperatures2(data):
@@ -23,6 +23,73 @@ def temperatures3(data):
         "RTD5Temperature": (signed_int(data[2], data[3]) / 10., "degC"),
         "MotorTemperature": (signed_int(data[4], data[5]) / 10., "degC"),
         "TorqueShudder": (signed_int(data[6], data[7]) / 10., "nM")
+    }
+
+def analog_input_voltages(data):
+    return {
+        "Hardware Gate/Desaturation Fault": grab_byte(data[0], 0),
+        "Accelerator Shorted": grab_byte(data[0], 1),
+        "Accelerator Open": grab_byte(data[0], 2),
+        "Current Sensor Low": grab_byte(data[0], 3),
+        "Current Sensor High": grab_byte(data[0], 4),
+        "Module Temperature Low": grab_byte(data[0], 5),
+        "Module Temperature High": grab_byte(data[0], 6),
+        "Control PCB Temperature Low": grab_byte(data[0], 7),
+        "Control PCB Temperature High": grab_byte(data[1], 0),
+        "Gate Drive PCB Temperature Low": grab_byte(data[1], 1),
+        "Gate Drive PCB Temperature High": grab_byte(data[1], 2),
+        "5V Sense Voltage Low": grab_byte(data[1], 3),
+        "5V Sense Voltage High": grab_byte(data[1], 4),
+        "12V Sense Voltage Low": grab_byte(data[1], 5),
+        "12V Sense Voltage High": grab_byte(data[1], 6),
+        "2.5V Sense Voltage Low": grab_byte(data[1], 7),
+        "2.5 Sense Voltage High": grab_byte(data[2], 0),
+        "1.5 Sense Voltage Low": grab_byte(data[2], 1),
+        "1.5 Sense Voltage High": grab_byte(data[2], 2),
+        "DC Bus Voltage High": grab_byte(data[2], 3),
+        "DC Bus Voltage Low": grab_byte(data[2], 4),
+        "Pre-charge Timeout": grab_byte(data[2], 5),
+        "Pre-charge Voltage Failure": grab_byte(data[2], 6),
+        "EEPROM Checksum Invalid": grab_byte(data[2], 7),
+        "EEPRIM Data Out of Range": grab_byte(data[3], 0),
+        "EEPROM Update Required": grab_byte(data[3], 1),
+        "Hardware DC Bus Over-Voltage during initialization": grab_byte(data[3], 2),
+        "Gen 3: Reserved / Gen 5: Gate Drive Initialization": grab_byte(data[3], 3),
+        "Reserved": grab_byte(data[3], 4),
+        "Brake Shorted": grab_byte(data[3], 5),
+        "Brake Open": grab_byte(data[3], 6),
+        "Motor Over-speed Fault": grab_byte(data[3], 7),
+        "Over-current Fault": grab_byte(data[4], 0),
+        "Over-voltage Fault": grab_byte(data[4], 1),
+        "Inverter Over-temperature Fault": grab_byte(data[4], 2),
+        "Accelerator Input Shorted Fault": grab_byte(data[4], 3),
+        "Accelerator Input Open Fault": grab_byte(data[4], 4),
+        "Direction Command Fault": grab_byte(data[4], 5),
+        "Inverter Response Time-out Fault": grab_byte(data[4], 6),
+        "Hardware Gate/Desaturation Fault": grab_byte(data[4], 7),
+        "Hardware Over-current Fault": grab_byte(data[5], 0),
+        "Under-voltage Fault": grab_byte(data[5], 1),
+        "CAN Command Message Lost Fault": grab_byte(data[5], 2),
+        "Motor Over-temperature Fault": grab_byte(data[5], 3),
+        "Reserved": grab_byte(data[5], 4),
+        "Reserved": grab_byte(data[5], 5),
+        "Reserved": grab_byte(data[5], 6),
+        "Brake Input Shorted Fault": grab_byte(data[5], 7),
+        "Brake Input Open Fault": grab_byte(data[6], 0),
+        "Module A Over-temperature Fault": grab_byte(data[6], 1),
+        "Module B Over-temperature Fault": grab_byte(data[6], 2),
+        "Module C Over-temperature Fault": grab_byte(data[6], 3),
+        "PCB Over-temperature Fault": grab_byte(data[6], 4),
+        "Gate Drive Board 1 Over-temperature Fault": grab_byte(data[6], 5),
+        "Gate Drive Board 2 Over-temperature Fault": grab_byte(data[6], 6),
+        "Gate Drive Board 3 Over-temperature Fault": grab_byte(data[6], 7),
+        "Current Sensor Fault": grab_byte(data[7], 0),
+        "Gen 3: Reserved / Gen 5: Gate Drive Over-Volage": grab_byte(data[7], 1),
+        "Gen 3: Hardware DC Bus Over-Voltage Fault / Gen 5: Reserved": grab_byte(data[7], 2),
+        "Gen 3: Reserved / Gen 5: Hardware DC Bus Over-voltage Fault": grab_byte(data[7], 3),
+        "Reserved": grab_byte(data[7], 4),
+        "Resolved Not Connected": grab_byte(data[7], 5),
+        "Reserved": grab_byte(data[7], 6)
     }
 
 def digital_input_status(data):
