@@ -25,7 +25,7 @@ def temperatures3(data):
         "TorqueShudder": (signed_int(data[6], data[7]) / 10., "nM")
     }
 
-def analog_input_voltages(data):
+def fault_codes(data):
     return {
         "Hardware Gate/Desaturation Fault": grab_byte(data[0], 0),
         "Accelerator Shorted": grab_byte(data[0], 1),
