@@ -16,7 +16,7 @@ decoder_funcs = {
     "Inverter1_Torque_&_Timer_Information": torque_and_timer_information,
     "Inverter1_Modulation_Index_&_Flux_Weakening_Output_Information": modulation_index,
     "Inverter1_Firmware_Information": firmware,
-    "Inverter1_Diagnostic_Data": None,
+    "Inverter1_Diagnostic_Data": diagnostic_data,
     "Inverter1_High_Speed_Message": high_speed_message,
 }
 
