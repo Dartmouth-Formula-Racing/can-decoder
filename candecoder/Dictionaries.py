@@ -12,7 +12,7 @@ decoder_funcs = {
     "Inverter1_Flux_Information": flux_information,
     "Inverter1_Internal_Voltages": internal_voltages,
     "Inverter1_Internal_States": None,
-    "Inverter1_Fault_Codes": None,
+    "Inverter1_Fault_Codes": fault_codes,
     "Inverter1_Torque_&_Timer_Information": None,
     "Inverter1_Modulation_Index_&_Flux_Weakening_Output_Information": modulation_index,
     "Inverter1_Firmware_Information": None,
