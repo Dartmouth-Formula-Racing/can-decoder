@@ -168,8 +168,18 @@ def extract_by_range(data, start_bit, stop_bit):
     return (mask & x) >> start_bit
 
 def torque_and_timer_information(data):
+    torque_data = extract_by_range(data[5], 4, 5)
+
     return {
-        "CommandedTorque": (signed_int(data[0], data[1]) / 10., "N-m"),
-        "TorqueFeedback": (signed_int(data[2], data[3]) / 10., "N-m"),
-        "PowerOnTimer": (signed_int(data[4], data[5]) + (256 ** 2) * signed_int(data[6], data[7])) / 10.
+        "CommandedTorque": (signed_int(torque_data[0], torque_data[1]) / 10., "N-m"),
+        "TorqueFeedback": (signed_int(torque_data[2], torque_data[3]) / 10., "N-m"),
+        "PowerOnTimer": (signed_int(torque_data[4], torque_data[5], torque_data[6], torque_data[7]) * 1000/3., "seconds"),
+    }
+
+def firmware(data):
+    return {
+        "EEPROMVersion": (signed_int(data[0], data[1]), "Version"),
+        "SoftwareVersion": (signed_int(data[2], data[3]), "Version"),
+        "DateCode": (signed_int(data[4], data[5]), "mmdd"),
+        "DateCode": (signed_int(data[6], data[7]), "yyyy")
     }
