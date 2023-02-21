@@ -168,8 +168,6 @@ def extract_by_range(data, start_bit, stop_bit):
     return (mask & x) >> start_bit
 
 def torque_and_timer_information(data):
-    torque_data = extract_by_range(data[5], 4, 5)
-
     return {
         "CommandedTorque": (signed_int(data[0], data[1]) / 10., "N-m"),
         "TorqueFeedback": (signed_int(data[2], data[3]) / 10., "N-m"),
@@ -183,3 +181,58 @@ def firmware(data):
         "DateCode": (signed_int(data[4], data[5]), "mmdd"),
         "DateCode": (signed_int(data[6], data[7]), "yyyy")
     }
+
+def diagnostic_data(data):
+        if data[1] == 0:
+            return {
+                "RecordNumber": (data[0], ""),
+                "gamma_resolver": (signed_int(data[1], data[2]), ""),
+                "gamma_observer": (signed_int(data[4], data[5]), ""),
+                "sin_corr": (signed_int(data[6], data[7]), ""),
+                "0": (signed_int(data[1]), ""),
+
+            }
+        if data[1] == 1:
+            return {
+                "RecordNumber": (data[0], ""),
+                "cos_corr": (signed_int(data[1], data[2]), ""),
+                "la_corr": (signed_int(data[4], data[5]), ""),
+                "lb_corr": (signed_int(data[6], data[7]), ""),
+                "1": (signed_int(data[1]), ""),
+            }
+
+        if data[1] == 2:
+            return {
+                "RecordNumber": (data[0], ""),
+                "lc_corr": (signed_int(data[1], data[2]), ""),
+                "Vdc": (signed_int(data[4], data[5]), ""),
+                "iq_cmd": (signed_int(data[6], data[7]), ""),
+                "2": (signed_int(data[1]), ""),
+            }
+        if data[1] == 3:
+            return {
+                "RecordNumber": (data[0], ""),
+                "id_cmd": (signed_int(data[1], data[2]), ""),
+                "modulation": (signed_int(data[4], data[5]), ""),
+                "flux_weak_out": (signed_int(data[6], data[7]), ""),
+                "3": (signed_int(data[1]), ""),
+            }
+
+        if data[1] == 4:
+            return {
+                "RecordNumber": (data[0], ""),
+                "vq_cmd": (signed_int(data[1], data[2]), ""),
+                "vd_cmd": (signed_int(data[4], data[5]), ""),
+                "vqs_cmd": (signed_int(data[6], data[7]), ""),
+                "4": (signed_int(data[1]), ""),
+            }
+
+        if data[1] == 5:
+            return {
+                "RecordNumber": (data[0], ""),
+                "12Vvoltage/PWM Frequency": (signed_int(data[1], data[2]), ""),
+                "run_faults(lo)": (signed_int(data[4], data[5]), ""),
+                "run_faults(hi)": (signed_int(data[6], data[7]), ""),
+                "5": (signed_int(data[1]), ""),
+
+            }
